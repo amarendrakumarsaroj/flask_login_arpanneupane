@@ -1,5 +1,4 @@
-from app import app
-from app import db
+from extensions import db
 from flask_login import UserMixin
 
 
