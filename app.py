@@ -2,7 +2,7 @@ from flask import Flask, render_template, url_for, redirect
 from extensions import db
 from models.users import User
 from flask_bcrypt import Bcrypt
-# from flask_sqlalchemy import SQLAlchemy
+# from flask_sqlalchemy import SQLAlchemy # managed in another file extensions.py
 
 #flask forms
 from flask_login import login_user, LoginManager, login_required, logout_user, current_user
@@ -16,7 +16,7 @@ bcrypt = Bcrypt(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 app.config['SECRET_KEY'] = '$ECRET_key'
 
-# db = SQLAlchemy(app)
+# db = SQLAlchemy(app) # managed in another file extensions.py
 ###########################################################################################
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -106,7 +106,7 @@ def login():
         if user:
             if bcrypt.check_password_hash(user.password, form.password.data):
                 login_user(user)
-                return redirect(url_for('dashboard'), user.username)
+                return redirect(url_for('dashboard'))
     return render_template('login.html', form=form)
 
 #Dashboard : '/dashboard'
