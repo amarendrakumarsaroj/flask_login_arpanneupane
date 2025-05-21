@@ -1,3 +1,6 @@
+from dotenv import load_dotenv
+load_dotenv()
+#Load .env file configs using load_dotenv() from python-dotenv library
 from flask import Flask, render_template, url_for, redirect
 from extensions import db
 from models.users import User
