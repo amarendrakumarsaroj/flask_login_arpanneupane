@@ -101,10 +101,18 @@
     .register-link:hover {
       color: #000;
     }
+    .logo {
+            display: block;
+            margin: 20px auto;
+            width: 150px;
+        }
   </style>
 </head>
 <body>
   <div class="login-container">
+    <!-- Logo -->
+        <img src="{{ url_for('static', filename='icons/favicon.svg') }}" alt="LOGO" class="logo">
+
     <h1>Login Page</h1>
     <form method="POST">
       {{ form.hidden_tag() }}

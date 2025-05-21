@@ -52,10 +52,18 @@
     .link-button:hover {
       background-color: #2980b9;
     }
+    .logo {
+            display: block;
+            margin: 20px auto;
+            width: 150px;
+        }
   </style>
 </head>
 <body>
   <div class="container">
+    <!-- Logo -->
+        <img src="{{ url_for('static', filename='icons/favicon.svg') }}" alt="LOGO" class="logo">
+
     <h1>Login Authentication System</h1>
     <a href="{{ url_for('login') }}" class="link-button">Login Page</a>
     <a href="{{ url_for('register') }}" class="link-button">Register Page</a>
