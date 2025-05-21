@@ -1,13 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='icons/favicon.svg') }}">
-    <title>Dashboard</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='icons/favicon.svg') }}" />
+  <title>Enterprise Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    * {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to right, #74ebd5, #acb6e5);
+      min-height: 100vh;
+      padding: 40px;
+    }
+
+    .dashboard-wrapper {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 40px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .dashboard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
+    .dashboard-header h1 {
+      font-size: 28px;
+      color: #333;
+    }
+
+    .logout-btn {
+      background: #ff5252;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .logout-btn:hover {
+      background-color: #e04343;
+    }
+
+    .stats-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .stat-card {
+      background-color: #f5f7fa;
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .stat-card h2 {
+      font-size: 32px;
+      color: #4a4a4a;
+    }
+
+    .stat-card p {
+      font-size: 14px;
+      color: #777;
+      margin-top: 8px;
+    }
+
+    .charts-container {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    canvas {
+      max-width: 100%;
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px;
+    }
+  </style>
 </head>
 <body>
-    <h1>Hello {{ current_user.username.split('@')[0] }} ! you are logged in!</h1>
-    <a href="{{ url_for('logout') }}">LOGOUT</a>
+  <div class="dashboard-wrapper">
+    <div class="dashboard-header">
+      <h1>Welcome, {{ current_user.username.split('@')[0] }} 👋</h1>
+      <a href="{{ url_for('logout') }}" class="logout-btn">LOGOUT</a>
+    </div>
+
+    <div class="stats-container">
+      <div class="stat-card">
+        <h2>150</h2>
+        <p>Total Users</p>
+      </div>
+      <div class="stat-card">
+        <h2>35</h2>
+        <p>Admins</p>
+      </div>
+      <div class="stat-card">
+        <h2>$25K</h2>
+        <p>Monthly Revenue</p>
+      </div>
+      <div class="stat-card">
+        <h2>98%</h2>
+        <p>System Uptime</p>
+      </div>
+    </div>
+
+    <div class="charts-container">
+      <canvas id="lineChart"></canvas>
+      <canvas id="barChart"></canvas>
+    </div>
+  </div>
+
+  <script>
+    // Line Chart - Users Over Time
+    const ctx1 = document.getElementById('lineChart').getContext('2d');
+    new Chart(ctx1, {
+      type: 'line',
+      data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+        datasets: [{
+          label: 'New Users',
+          data: [30, 45, 60, 80, 75, 90],
+          fill: false,
+          borderColor: '#36a2eb',
+          tension: 0.4
+        }]
+      },
+      options: {
+        responsive: true,
+        animation: {
+          duration: 1500
+        }
+      }
+    });
+
+    // Bar Chart - Sales
+    const ctx2 = document.getElementById('barChart').getContext('2d');
+    new Chart(ctx2, {
+      type: 'bar',
+      data: {
+        labels: ['Electronics', 'Books', 'Clothing', 'Toys', 'Groceries'],
+        datasets: [{
+          label: 'Sales ($)',
+          data: [5000, 3000, 4000, 2500, 6000],
+          backgroundColor: '#4caf50'
+        }]
+      },
+      options: {
+        responsive: true,
+        animation: {
+          duration: 1000
+        }
+      }
+    });
+  </script>
 </body>
 </html>
