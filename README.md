@@ -12,7 +12,7 @@ STEPS TO FOLLOW FOR COMPLETE INSTALLATION
 1. git clone "https://https://github.com/amarendrakumarsaroj/flask_login_arpanneupane.git
 2. DOWNLOAD and INSTALL python from https://www.python.org/downloads and add to PATH of Windows Environment Variables.
 3. in the source folder run " python -m venv venv"
-4. activate the virual environment by : a) cd .\venv\Scripts\    b) RUN .\activate  for powershell [or cmd or zsh or any shell that you use]
+4. activate the virtual environment by : a) cd .\venv\Scripts\    b) RUN .\activate  for powershell [or cmd or zsh or any shell that you use]
 5. Change directory to the source folder
 6. git checkout aks # go to aks branch for better code visualization and updated codes
 7. now if you have something like (venv)C:\xyz-source-folder> .. run "pip install -r requirements.txt"
