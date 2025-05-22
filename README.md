@@ -9,7 +9,7 @@ Fully reusable without formal consent.
 ####################
 STEPS TO FOLLOW FOR COMPLETE INSTALLATION
 
-1. git clone "https://https://github.com/amarendrakumarsaroj/flask_login_arpanneupane.git
+1. git clone "https://github.com/amarendrakumarsaroj/flask_login_arpanneupane.git
 2. DOWNLOAD and INSTALL python from https://www.python.org/downloads and add to PATH of Windows Environment Variables.
 3. in the source folder run " python -m venv venv"
 4. activate the virtual environment by : a) cd .\venv\Scripts\    b) RUN .\activate  for powershell [or cmd or zsh or any shell that you use]
